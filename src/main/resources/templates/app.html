@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title th:text="#{app.page.title}"></title>
+
+	<link type="text/css" rel="stylesheet" th:href="@{/css/app.css}" href="../static/css/app.css"/>
+	<link rel="stylesheet" media="screen" href="//cdn.jsdelivr.net/webjars/org.webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+
+<body>
+<div th:object="${hello}">
+	<label th:text="*{name}"></label>
+</div>
+<form th:action="@{/app/}"></form>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//cdn.jsdelivr.net/webjars/org.webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<script th:src="@{/js/common.js}" src="../static/js/common.js"></script>-->
+</body>
+</html>
