@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:data="...">
+<head></head>
+<body>
+<table th:fragment="row" th:remove="tag">
+	<tr class="row" data:depart="${depart}"  th:object="${depart}" th:each="depart, idx : ${departs}">
+		<td th:text="${idx.count}">0</td>
+		<td th:text="*{name}">unknown</td>
+		<td th:text="*{tariff}">undefined</td>
+		<td>
+			<div class="row">
+				<button type="button" class="btn btn-success" onclick="">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</button>
+				<button type="button" class="btn btn-danger" onclick="">
+					<span class="glyphicon glyphicon-remove"></span>
+				</button>
+			</div>
+			<div class="dropdown row">
+				<button th:id="|dropdownMenu_*{id}|" type="button" class="btn btn-warning dropdown-toggle"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="glyphicon glyphicon-menu-down"></span>
+				</button>
+				<ul class="dropdown-menu" th:aria-labelledby="|dropdownMenu_*{id}|">
+					<li><a href="#">Action</a></li>
+					<li><a href="#">Another action</a></li>
+					<li><a href="#">Something else here</a></li>
+				</ul>
+			</div>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,5 +1,7 @@
 package com.dakor.service.dto;
 
+import java.math.BigDecimal;
+
 /**
  * .
  *
@@ -8,7 +10,7 @@ package com.dakor.service.dto;
 public class DepartmentDto {
 	private String id;
 	private String name;
-	private TariffDto tariff;
+	private BigDecimal tariff;
 
 	public String getId() {
 		return id;
@@ -26,11 +28,11 @@ public class DepartmentDto {
 		this.name = name;
 	}
 
-	public TariffDto getTariff() {
+	public BigDecimal getTariff() {
 		return tariff;
 	}
 
-	public void setTariff(TariffDto tariff) {
+	public void setTariff(BigDecimal tariff) {
 		this.tariff = tariff;
 	}
 }

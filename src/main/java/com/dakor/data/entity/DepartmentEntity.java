@@ -1,6 +1,7 @@
 package com.dakor.data.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * .
@@ -13,8 +14,8 @@ public class DepartmentEntity extends AbstractIdentifierEntity {
 	@Column(name = "NAME", nullable = false, length = 50)
 	private String name;
 
-	@OneToOne(mappedBy = "department", cascade = CascadeType.ALL)
-	private TariffEntity tariff;
+	@Column(name = "TARIFF", precision = 4, scale = 2, columnDefinition="DECIMAL(4,2)")
+	private BigDecimal tariff;
 
 	public String getName() {
 		return name;
@@ -24,11 +25,11 @@ public class DepartmentEntity extends AbstractIdentifierEntity {
 		this.name = name;
 	}
 
-	public TariffEntity getTariff() {
+	public BigDecimal getTariff() {
 		return tariff;
 	}
 
-	public void setTariff(TariffEntity tariff) {
+	public void setTariff(BigDecimal tariff) {
 		this.tariff = tariff;
 	}
 }

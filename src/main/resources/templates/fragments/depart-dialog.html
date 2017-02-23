@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" media="screen" href="webjars/bootstrap/3.3.7/css/bootstrap.css"/>
+	<script th:src="@{/js/plugin/inputmask/jquery.inputmask.bundle.min.js}"
+			src="../../static/js/plugin/inputmask/jquery.inputmask.bundle.min.js"></script>
+</head>
+
+<body>
+<!-- fragment of the department dialog -->
+<form th:fragment="depart-dialog" id="departDialogForm" th:classappend="${#fields.hasErrors()} ? 'has-error'"
+	  th:object="${depart}" th:action="@{/app/departs/save}" method="post">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="dialogTitle"
+			th:text="*{id} ? #{app.departs.dialog.title.edit} : #{app.departs.dialog.title.add}">Modal title</h4>
+	</div>
+	<div class="modal-body panel-body">
+		<input type="hidden" th:field="*{id}"/>
+		<div class="row">
+			<label for="dialogName" th:text="#{app.departs.dialog.name}"></label>
+			<input id="dialogName" class="input-sm pull-right" type="text" th:field="*{name}"/>
+			<div class="alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+		</div>
+		<div class="row">
+			<label for="dialogTariff" th:text="#{app.departs.dialog.tariff}"></label>
+			<input id="dialogTariff" class="input-sm pull-right" type="text" th:field="*{tariff}"
+				   data-inputmask="'alias' : 'decimal', 'mask' : '99,99', 'insertMode' : false, 'onBeforeMask' : '00,00'"/>
+			<div class="alert-warning" th:if="${#fields.hasErrors('tariff')}" th:errors="*{tariff}"></div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<input type="button" class="btn btn-default" data-dismiss="modal"
+			   th:value="#{app.dialog.close}"/>
+		<input type="submit" class="btn btn-primary" th:value="#{app.dialog.save}"/>
+	</div>
+
+	<script>
+		$(function () {
+			$(":input").inputmask();
+		})
+	</script>
+</form>
+</body>
+</html>

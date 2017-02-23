@@ -18,6 +18,7 @@ class DepartmentAssembler implements IDepartmentAssembler {
 			dto = new DepartmentDto();
 			dto.setId(entity.getId());
 			dto.setName(entity.getName());
+			dto.setTariff(entity.getTariff());
 		}
 
 		return dto;
@@ -30,6 +31,7 @@ class DepartmentAssembler implements IDepartmentAssembler {
 			entity = new DepartmentEntity();
 			entity.setId(dto.getId());
 			entity.setName(dto.getName());
+			entity.setTariff(dto.getTariff());
 		}
 
 		return entity;

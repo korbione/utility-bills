@@ -2,7 +2,6 @@ package com.dakor;
 
 import com.dakor.service.IDepartmentService;
 import com.dakor.service.dto.DepartmentDto;
-import com.dakor.service.dto.TariffDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,13 +21,13 @@ public class UtilityBillsApplication {
 	@Autowired
 	public CommandLineRunner start(IDepartmentService departmentService) {
 		return (args) -> {
-			DepartmentDto department = new DepartmentDto();
-			department.setName("test");
-			department = departmentService.save(department);
-
-			TariffDto tariff = new TariffDto();
-			tariff.setValue(new BigDecimal("34.5"));
-			departmentService.saveTariff(department.getId(), tariff);
+			if (departmentService.getByName("test") == null) {
+				DepartmentDto department = new DepartmentDto();
+				department.setName("test");
+				department.setTariff(new BigDecimal("45.65"));
+				department = departmentService.save(department);
+				System.out.println(department.getId());
+			}
 		};
 	}
 }

@@ -4,9 +4,7 @@ import com.dakor.data.dao.DepartmentRepository;
 import com.dakor.data.entity.DepartmentEntity;
 import com.dakor.service.IDepartmentService;
 import com.dakor.service.assembler.IDepartmentAssembler;
-import com.dakor.service.assembler.ITariffAssembler;
 import com.dakor.service.dto.DepartmentDto;
-import com.dakor.service.dto.TariffDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +22,6 @@ import java.util.stream.Collectors;
 class DepartmentService implements IDepartmentService {
 	private DepartmentRepository departmentDao;
 	private IDepartmentAssembler departmentAssembler;
-	private ITariffAssembler tariffAssembler;
 
 	@Autowired
 	public void setDepartmentDao(DepartmentRepository departmentDao) {
@@ -34,11 +31,6 @@ class DepartmentService implements IDepartmentService {
 	@Autowired
 	public void setDepartmentAssembler(IDepartmentAssembler departmentAssembler) {
 		this.departmentAssembler = departmentAssembler;
-	}
-
-	@Autowired
-	public void setTariffAssembler(ITariffAssembler tariffAssembler) {
-		this.tariffAssembler = tariffAssembler;
 	}
 
 	@Transactional(readOnly = true)
@@ -63,9 +55,7 @@ class DepartmentService implements IDepartmentService {
 	}
 
 	@Override
-	public void saveTariff(String departmentId, TariffDto tariff) {
-		if (departmentId != null) {
-			departmentDao.saveTariff(departmentId, tariffAssembler.assembly(tariff));
-		}
+	public DepartmentDto getByName(String name) {
+		return departmentAssembler.assembly(departmentDao.getByName(name));
 	}
 }

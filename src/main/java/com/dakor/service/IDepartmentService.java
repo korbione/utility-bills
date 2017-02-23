@@ -1,7 +1,6 @@
 package com.dakor.service;
 
 import com.dakor.service.dto.DepartmentDto;
-import com.dakor.service.dto.TariffDto;
 
 /**
  * .
@@ -10,5 +9,5 @@ import com.dakor.service.dto.TariffDto;
  */
 public interface IDepartmentService extends IService<DepartmentDto> {
 
-	void saveTariff(String departmentId, TariffDto tariff);
+	DepartmentDto getByName(String name);
 }

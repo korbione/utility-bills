@@ -12,7 +12,7 @@ import javax.persistence.*;
 @MappedSuperclass
 abstract class AbstractIdentifierEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Column(name = "ID", nullable = false, unique = true, insertable = false)
 	private String id;
