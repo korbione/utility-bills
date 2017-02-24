@@ -26,7 +26,8 @@
 		<div class="row">
 			<label for="dialogTariff" th:text="#{app.departs.dialog.tariff}"></label>
 			<input id="dialogTariff" class="input-sm pull-right" type="text" th:field="*{tariff}"
-				   data-inputmask="'alias' : 'decimal', 'mask' : '99,99', 'insertMode' : false, 'onBeforeMask' : '00,00'"/>
+				   data-inputmask-alias="decimal" data-inputmask-integerDigits="2" data-inputmask-digits="2,2"
+				   data-inputmask-placeholder="0" data-inputmask-allowPlus="false" data-inputmask-allowMinus="false"/>
 			<div class="alert-warning" th:if="${#fields.hasErrors('tariff')}" th:errors="*{tariff}"></div>
 		</div>
 	</div>

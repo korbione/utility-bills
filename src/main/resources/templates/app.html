@@ -12,24 +12,21 @@
 			src="https://code.jquery.com/jquery-3.1.1.js"
 			integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
 			crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/jquery.mask/1.14.10/jquery.mask.min.js"></script>
-<!--	<script th:src="@{/js/plugin/inputmask/jquery.inputmask.bundle.min.js}"
-			src="../static/js/plugin/inputmask/jquery.inputmask.bundle.min.js"></script>-->
+	<script th:src="@{/js/plugin/inputmask/jquery.inputmask.bundle.min.js}"
+			src="../static/js/plugin/inputmask/jquery.inputmask.bundle.min.js"></script>
 	<script src="/webjars/bootstrap/3.3.7/js/bootstrap.js"></script>
-	<script src="/webjars/jquery-maskedinput/1.4.0/jquery.maskedinput.min.js"></script>
 	<!--<link rel="stylesheet" media="screen" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>-->
 </head>
 
 <body>
 <div class="panel-body">
-	<input type="text" id="field-name"/>
 	<div id="departsTable"></div>
 </div>
 
 <script>
 	$(function () {
+		$(":input").inputmask();
 		$('#departsTable').load("/app/departs");
-		$('#field-name').mask('99.99', {inputmask: '00.00', value:'00.00',reverse: true, placeholder: 0});
 	})
 </script>
 </body>
